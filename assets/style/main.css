@@ -28,16 +28,45 @@
   background-size: cover;
 }
 
-.big-box {
+.container .progress-bar {
+  width: 65%;
+  position: absolute;
   background: #ffffff4a;
+  height: 30px;
+  top: 48px;
+  border-radius: 15px;
+  font-family: "Noto Sans Mono";
+  overflow: hidden;
+  height: 30px;
+}
+.container .progress-bar .progress-bar-fill {
+  width: 0;
+  background-color: #ffe12b;
+  height: 30px;
+}
+.container .progress-bar .progress-bar-fill .progress-value {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 20px;
+}
+.container .container-box {
   width: 65%;
   height: 75vh;
+  display: flex;
+  justify-content: center;
+  overflow-y: hidden;
+  background: #ffffff4a;
   border-radius: 5px;
+}
+.big-box {
+  background: transparent;
   display: flex;
   flex-wrap: wrap;
   align-items: start;
   justify-content: start;
-  overflow-y: auto;
+  overflow-y: hidden;
+  transition: all 0.5s;
 }
 
 .word-box {

@@ -2,6 +2,8 @@ let AllWords = [];
 let current_word = 0;
 let current_word_length = 0;
 let current_letter = 0;
+let margin_box = 168;
+let AllWordsEnglish = [];
 
 async function getWords() {
   return await fetch("./data/words.md")
@@ -97,11 +99,17 @@ function HandelTyping(e) {
           current_word + 1
         }) .english-title span.letter:nth-of-type(${current_letter + 1})`
       );
-      nextelement.classList.add("selected");
-      let nextword = document.querySelector(
-        `.big-box .word-box:nth-of-type(${current_word + 1})`
-      );
-      nextword.classList.add("selected");
+      if (nextelement) {
+        nextelement.classList.add("selected");
+        let nextword = document.querySelector(
+          `.big-box .word-box:nth-of-type(${current_word + 1})`
+        );
+        nextword.classList.add("selected");
+        if (nextword.offsetTop > 168) {
+          box_up_step();
+        }
+      }
+      increament_bar();
     } else {
       current_letter++;
       let nextelement = document.querySelector(
@@ -118,9 +126,24 @@ function HandelTyping(e) {
         current_word + 1
       }) .english-title span.letter:nth-of-type(${current_letter + 1})`
     );
+    let current_value = current_element.innerHTML;
+    current_element.innerHTML = keypressed;
     current_element.classList.add("wrong");
     setTimeout(() => {
       current_element.classList.remove("wrong");
-    }, 50);
+      current_element.innerHTML = current_value;
+    }, 150);
   }
+}
+
+function box_up_step() {
+  document.querySelector(".big-box").style.marginTop = `-${margin_box}px`;
+  margin_box += 168;
+}
+
+function increament_bar() {
+  let bar = document.querySelector(".progress-bar-fill");
+  let value = (current_word / AllWordsEnglish.length) * 100;
+  bar.style.width = `${value}%`;
+  document.querySelector(".progress-value").innerHTML = `${parseInt(value)}%`;
 }
