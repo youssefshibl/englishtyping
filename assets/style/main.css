@@ -87,10 +87,11 @@
 }
 
 .word-box .english-title {
-  padding: 10px;
-  margin: 10px 5px 5px 5px;
+  padding: 5px;
+  margin: 5px 2.5px 2.5px 2.5px;
   border-top: 2px solid transparent;
   border-radius: 5px;
+  display: flex;
 }
 
 .word-box .english-title span.letter {
@@ -104,6 +105,7 @@
   padding-right: 2px;
   position: relative;
   margin: 2px;
+  min-width: 25px;
 }
 
 .word-box .english-title span.letter.selected::before {
