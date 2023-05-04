@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "Arabic_1";
+  src: url("../fonts/NotoSansArabic-Light.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Noto Sans Mono";
+  src: url("../fonts/NotoSansMono-VariableFont_wdth\,wght.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -12,4 +26,81 @@
   background: url("../images/6.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.big-box {
+  background: #ffffff4a;
+  width: 65%;
+  height: 75vh;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: start;
+  overflow-y: auto;
+}
+
+.word-box {
+  min-width: 200px;
+  padding: 15px;
+  text-align: center;
+  background: #f9f2b4c4;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.word-box .arabic-title {
+  font-family: "Arabic_1";
+  border-left: 3px solid #28a745;
+  background: #28a74547;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 17px;
+}
+
+.word-box .english-title {
+  padding: 10px;
+  margin: 10px 5px 5px 5px;
+  border-top: 2px solid transparent;
+  border-radius: 5px;
+}
+
+.word-box .english-title span.letter {
+  font-family: "Noto Sans Mono";
+  background: #ffffff4a;
+  font-size: 35px;
+  color: #757575;
+  border-radius: 4px;
+  padding-bottom: 5px;
+  padding-left: 2px;
+  padding-right: 2px;
+  position: relative;
+  margin: 2px;
+}
+
+.word-box .english-title span.letter.selected::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  height: 3px;
+  background: #0a6bf9;
+  bottom: -3px;
+  left: 0;
+  right: 0;
+}
+
+/* .word-box.selected .arabic-title {
+  border-left: 3px solid #0a6bf5;
+  background: #0a6bf947;
+} */
+
+.word-box.selected .english-title {
+  border-top: 2px solid #0a6bf9;
+}
+
+.word-box .english-title span.letter.done {
+  background: #fff;
+}
+
+.word-box.selected .english-title span.letter.wrong {
+  background: #ff90a3;
 }
