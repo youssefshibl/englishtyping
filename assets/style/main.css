@@ -33,7 +33,7 @@
   position: absolute;
   background: #ffffff4a;
   height: 30px;
-  top: 48px;
+  top: 10px;
   border-radius: 15px;
   font-family: "Noto Sans Mono";
   overflow: hidden;
@@ -51,8 +51,8 @@
   font-size: 20px;
 }
 .container .container-box {
-  width: 65%;
-  height: 75vh;
+  width: 90%;
+  height: 90vh;
   display: flex;
   justify-content: center;
   overflow-y: hidden;

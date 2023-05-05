@@ -32,6 +32,9 @@ async function getWords() {
 
 async function core() {
   AllWords = await getWords();
+  shuffle_(AllWords)
+
+
   // get first element of each array inside AllWords
   AllWordsEnglish = AllWords.map((word) => word[0]);
   console.log(AllWords);
@@ -46,9 +49,8 @@ function RenderDataToUi() {
   let word;
   for (let i = 0; i < AllWords.length; i++) {
     word = AllWords[i];
-    cotainer_words_box_html += `<div class="word-box ${
-      i == 0 ? "selected" : ""
-    }">
+    cotainer_words_box_html += `<div class="word-box ${i == 0 ? "selected" : ""
+      }">
                                     <div class="arabic-title">
                                     <h4>${word[1]}</h4>
                                     </div>
@@ -60,15 +62,15 @@ function RenderDataToUi() {
   function RenderEnglish(englishword, j) {
     let englishword_html = "";
     for (let i = 0; i < englishword.length; i++) {
-      englishword_html += `<span class="letter ${
-        i == 0 && j == 0 ? "selected" : ""
-      }">${englishword[i]}</span>`;
+      englishword_html += `<span class="letter ${i == 0 && j == 0 ? "selected" : ""
+        }">${englishword[i]}</span>`;
     }
     return englishword_html;
   }
   cotainer_words_box.innerHTML = cotainer_words_box_html;
 }
 core();
+
 function HandelTyping(e) {
   let keypressed = e.key;
   current_word_length = AllWordsEnglish[current_word].length;
@@ -95,8 +97,7 @@ function HandelTyping(e) {
       current_word++;
       current_letter = 0;
       let nextelement = document.querySelector(
-        `.big-box .word-box:nth-of-type(${
-          current_word + 1
+        `.big-box .word-box:nth-of-type(${current_word + 1
         }) .english-title span.letter:nth-of-type(${current_letter + 1})`
       );
       if (nextelement) {
@@ -113,8 +114,7 @@ function HandelTyping(e) {
     } else {
       current_letter++;
       let nextelement = document.querySelector(
-        `.big-box .word-box:nth-of-type(${
-          current_word + 1
+        `.big-box .word-box:nth-of-type(${current_word + 1
         }) .english-title span.letter:nth-of-type(${current_letter + 1})`
       );
       nextelement.classList.add("selected");
@@ -122,16 +122,16 @@ function HandelTyping(e) {
   } else {
     console.log("wrong");
     let current_element = document.querySelector(
-      `.big-box .word-box:nth-of-type(${
-        current_word + 1
+      `.big-box .word-box:nth-of-type(${current_word + 1
       }) .english-title span.letter:nth-of-type(${current_letter + 1})`
     );
-    
+
     current_element.innerHTML = keypressed;
+    let value = AllWordsEnglish[current_word][current_letter];
     current_element.classList.add("wrong");
     setTimeout(() => {
       current_element.classList.remove("wrong");
-      current_element.innerHTML = AllWordsEnglish[current_word][current_letter];
+      current_element.innerHTML = value;
     }, 100);
   }
 }
@@ -147,3 +147,24 @@ function increament_bar() {
   bar.style.width = `${value}%`;
   document.querySelector(".progress-value").innerHTML = `${parseInt(value)}%`;
 }
+
+
+
+function shuffle_(array) {
+  let currentIndex = array.length, randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex != 0) {
+
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
