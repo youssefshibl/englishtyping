@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "@notionhq/client": "^2.2.5",
+    "body-parser": "^1.20.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1",
+    "notion-to-md": "^2.6.0"
+  },
+  "name": "englishtyping",
+  "version": "1.0.0",
+  "main": "server2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/codebox3/englishtyping.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/codebox3/englishtyping/issues"
+  },
+  "homepage": "https://gitlab.com/codebox3/englishtyping#readme",
+  "description": ""
+}
