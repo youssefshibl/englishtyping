@@ -9,7 +9,6 @@ async function getnotiondata(app_id, token) {
       auth: token,
     });
     //let users = await notion.users.list();
-    console.log("-->", users);
     const n2m = new NotionToMarkdown({ notionClient: notion });
 
     const mdblocks = await n2m.pageToMarkdown(app_id);
