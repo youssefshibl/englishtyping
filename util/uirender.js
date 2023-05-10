@@ -14,7 +14,7 @@ function getWords(data) {
     .filter((word) => space.test(word))
     .map((word) => word.trim() + " ");
 
-  console.log(words);
+  //console.log(words);
 
   const words_1 = [];
   for (let i = 0; i < words.length; i += 2) {

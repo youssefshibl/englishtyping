@@ -31,10 +31,16 @@ app.post("/data", async (req, res) => {
   let token = req.body.token;
   let data = await notionapi.getnotiondata(page_id, token);
   //console.log(data);
-  let AllWords = uirender.getWords(data.parent);
-  res.json({
-    data: AllWords,
-  });
+  if (data && data.hasOwnProperty("parent")) {
+    let AllWords = uirender.getWords(data.parent);
+    res.json({
+      data: AllWords,
+    });
+  } else {
+    res.json({
+      data: null,
+    });
+  }
 });
 
 function MainDir() {

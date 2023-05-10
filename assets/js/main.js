@@ -55,15 +55,22 @@ async function core() {
       }),
     }).then((res) => res.json())
   ).data;
-  console.log(AllWords);
-  shuffle_(AllWords);
+  if (AllWords) {
+    console.log(AllWords);
+    shuffle_(AllWords);
 
-  // get first element of each array inside AllWords
-  AllWordsEnglish = AllWords.map((word) => word[0]);
-  //console.log(AllWords);
-  //console.log(AllWordsEnglish);
-  RenderDataToUi();
-  document.addEventListener("keypress", (e) => HandelTyping(e));
+    // get first element of each array inside AllWords
+    AllWordsEnglish = AllWords.map((word) => word[0]);
+    //console.log(AllWords);
+    //console.log(AllWordsEnglish);
+    RenderDataToUi();
+    document.addEventListener("keypress", (e) => HandelTyping(e));
+  } else {
+    console.log("error in auth");
+    document.getElementById(
+      "big-box-container"
+    ).innerHTML = `<h1>Error in Auth</h1>`;
+  }
 }
 
 function RenderDataToUi() {
