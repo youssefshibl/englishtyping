@@ -56,7 +56,7 @@ async function core() {
     }).then((res) => res.json())
   ).data;
   console.log(AllWords);
-  //shuffle_(AllWords);
+  shuffle_(AllWords);
 
   // get first element of each array inside AllWords
   AllWordsEnglish = AllWords.map((word) => word[0]);
