@@ -35,14 +35,15 @@ async function getWords() {
     });
 }
 
-async function core() {
+async function core(page_id, token) {
   //AllWords = await getWords();
-  const page_id = document
-    .querySelector('meta[name="page_id"]')
-    .getAttribute("content");
-  const token = document
-    .querySelector('meta[name="token"]')
-    .getAttribute("content");
+  // const page_id = document
+  //   .querySelector('meta[name="page_id"]')
+  //   .getAttribute("content");
+  // const token = document
+  //   .querySelector('meta[name="token"]')
+  //   .getAttribute("content");
+  make_some_changes_ui();
   AllWords = (
     await fetch("/data", {
       method: "POST",
@@ -67,9 +68,7 @@ async function core() {
     document.addEventListener("keypress", (e) => HandelTyping(e));
   } else {
     console.log("error in auth");
-    document.getElementById(
-      "big-box-container"
-    ).innerHTML = `<h1>Error in Auth</h1>`;
+    document.querySelector(".container-box").innerHTML = `<h1>Error in Auth</h1>`;
   }
 }
 
@@ -101,7 +100,7 @@ function RenderDataToUi() {
   }
   cotainer_words_box.innerHTML = cotainer_words_box_html;
 }
-core();
+//core();
 
 function HandelTyping(e) {
   let keypressed = e.key;
@@ -213,4 +212,42 @@ function trimString(str) {
     return null; // or return an empty string, throw an error, or do something else
   }
   return trimmedStr;
+}
+
+
+
+/// make function of click data input option 
+function click_option(element){
+  let active_element = document.querySelector(".option.active")
+  active_element.classList.remove("active")
+  element.classList.add("active")
+  let target_id = element.getAttribute("data-option-body")
+  let active_element_body = document.querySelector(".option-body-content.active")
+  active_element_body.classList.remove("active")
+  document.getElementById(target_id).classList.add("active")
+}
+
+
+let notion_form = document.querySelector("#form-1");
+notion_form.onsubmit = function(t){
+  t.preventDefault()
+  let page_id = document.querySelector("[name=\"page_id\"]").value;
+  let token = document.querySelector("[name=\"token\"]").value;
+  console.log(page_id)
+  console.log(token)
+  core(page_id,token)
+}
+
+function make_some_changes_ui(){
+  document.querySelector(".container").innerHTML = `<div class="container-box">
+                                                        <div class="big-box" id="big-box-container">
+                                                          <div class="loader"></div>
+
+                                                        </div>
+                                                        </div>
+                                                        <div class="progress-bar">
+                                                          <div class="progress-bar-fill">
+                                                          <div class="progress-value">0%</div>
+                                                        </div>
+                                                      </div>`
 }

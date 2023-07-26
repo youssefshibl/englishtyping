@@ -146,6 +146,7 @@
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   margin-top: 200px;
+  position: absolute;
 }
 
 /* Safari */
@@ -166,3 +167,109 @@
     transform: rotate(360deg);
   }
 }
+
+.option-data {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  display: flex;
+  margin-bottom: 20px;
+  margin-top: 50px;
+}
+
+.option {
+  padding: 10px 20px;
+  background: #91b733;
+  color: white;
+  font-family: "Noto Sans Mono";
+  cursor: pointer;
+}
+
+.option.first-option {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.option.last-option {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.option.active{
+  background-color: #d1412e;
+}
+
+.option:hover:not(.active){
+  background-color: #586e1fa4 ;
+}
+
+.option-body-content{
+  display: none;
+}
+
+.option-body-content.active{
+  display: block;
+}
+
+/* -------------------------- */
+.container .container-box form {
+  font-family: "Noto Sans Mono";
+  font-size: 20px;
+  color: white;
+  width: 600px;
+}
+
+.container .container-box form div {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container-box form div input {
+  width: 70%;
+  height: 34px;
+  border: none;
+  border-radius: 5px;
+  background: #91b733c7;
+  color: white;
+  padding: 10px;
+  font-family: "Noto Sans Mono";
+}
+.container-box form div input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.container-box form button {
+  padding: 8px 20px;
+  font-size: 20px;
+  border: none;
+  color: white;
+  background: #d1412e;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+

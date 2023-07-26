@@ -6,28 +6,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="assets/style/main.css" />
-    <link rel="stylesheet" href="assets/style/data.css" />
     <link rel="shortcut icon" href="assets/images/keyboard.png" type="image/x-icon">
   </head>
 
   <body>
     <div class="container">
       <div class="container-box">
-        <form action="/" method="POST">
-          <div>
-            <label for="page_id">Page ID</label>
-            <input type="text" name="page_id" id="page_id" required />
+        <div>
+          <div class="option-data">
+            <div data-option-body="option-body-1" class="option-1 first-option option active" onclick="click_option(this)">Notion</div>
+            <div data-option-body="option-body-2" class="option-1 last-option option" onclick="click_option(this)">Excel Sheet</div>
+  
           </div>
-          <div>
-            <label for="token">Token</label>
-            <input type="text" name="token" id="token" required />
+          <div class="option-body-all">
+            <div id="option-body-1" class="option-body-content active">
+              <form action="/" method="POST" id="form-1">
+                <div>
+                  <label for="page_id">Page ID</label>
+                  <input type="text" name="page_id" id="page_id" required />
+                </div>
+                <div>
+                  <label for="token">Token</label>
+                  <input type="text" name="token" id="token" required />
+                </div>
+                <div>
+                  <button type="submit">Go</button>
+                </div>
+              </form>
+            </div>
+            <div id="option-body-2" class="option-body-content"></div>
           </div>
-          <div>
-            <button type="submit">Go</button>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
 

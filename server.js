@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const notionapi = require("./util/notionapi");
 const uirender = require("./util/uirender");
-
+// ------------------ start config ---------------------------
+require('dotenv').config()
 app = express();
 app.use(express.static("."));
 // Set EJS as the view engine
@@ -13,11 +14,14 @@ app.set("views", path.join(__dirname, "view"));
 // Use the body-parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.listen(process.env.port || 3000);
 
+//---------------------end config ------------------
+
+//------------------- start route ----------------------------
 app.get("/", (req, res) => {
   res.sendFile(path.join(MainDir(), "view", "data.html"));
 });
+
 
 app.post("/", async (req, res) => {
   let page_id = req.body.page_id;
@@ -29,6 +33,9 @@ app.post("/", async (req, res) => {
 app.post("/data", async (req, res) => {
   let page_id = req.body.page_id;
   let token = req.body.token;
+  if(page_id == null || token == null ){
+
+  }
   let data = await notionapi.getnotiondata(page_id, token);
   //console.log(data);
   if (data && data.hasOwnProperty("parent")) {
@@ -47,3 +54,10 @@ function MainDir() {
   return path.dirname(process.mainModule.filename);
 }
 
+
+
+
+app.listen(process.env.PORT || 3000,function(err){
+  if (err) console.log("Error in server setup")
+  console.log("Server listening on Port", process.env.PORT || 3000);
+});
