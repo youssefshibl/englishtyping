@@ -5,6 +5,7 @@
 ### what is englishtyping?
 During this period time, I tried to improve my English language then I discover many vocabularies and i wrote it to  study them but I hat that every time i look them only so i make this solution to merge between new words and try to fast my typing in keyboard , it get word from by page in notion and display them 
 
+
 ## How it work
 when visite page it look like this 
 ![Screenshot from 2023-08-23 20-27-45](https://github.com/youssefshibl/englishtyping/assets/63800183/5cec7dc5-1dcd-4afa-a216-1a3e23b517dc)
