@@ -8,7 +8,8 @@ pipeline {
   stages {
     stage('installation') {
       steps {
-        sh 'ls'
+        sh '''ls
+echo "youssefshebl" > file.txt'''
       }
     }
 
