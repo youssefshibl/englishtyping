@@ -13,9 +13,10 @@ pipeline {
 
     stages {
 
+
         stage('Build (Master)') {
             when {
-                        expression { env.BRANCH_NAME == 'master' }
+                        expression { BRANCH_NAME == 'master' }
             }
             steps {
                 script {
@@ -34,7 +35,7 @@ pipeline {
 
         stage('Unit Test (Master)') {
             when {
-                        expression { env.BRANCH_NAME == 'master' }
+                        expression { BRANCH_NAME == 'master' }
             }
             steps {
                 script {
@@ -47,7 +48,7 @@ pipeline {
 
         stage('Unit Test (Not Master)') {
             when {
-                        expression { env.BRANCH_NAME != 'master' }
+                        expression { BRANCH_NAME != 'master' }
             }
             steps {
                 script {
@@ -60,12 +61,12 @@ pipeline {
 
         stage('Build (Not Master)') {
             when {
-                        expression { env.BRANCH_NAME != 'master' }
+                        expression { BRANCH_NAME != 'master' }
             }
             steps {
                 script {
-                        sh "git checkout ${env.BRANCH_NAME}"
-                        sh "git pull origin ${env.BRANCH_NAME}"
+                        sh "git checkout ${BRANCH_NAME}"
+                        sh "git pull origin ${BRANCH_NAME}"
                         echo 'Start Installing dependencies'
                         sh 'npm i'
                         echo 'Finish Installing dependencies'
@@ -77,4 +78,5 @@ pipeline {
         }
     }
 }
+
 
