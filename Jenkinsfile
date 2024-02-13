@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:14.16.1'
-            args '-u root'
-        }
-    }
+    agent any
 
     environment {
         SONAR_USER_HOME = "${WORKSPACE}/.sonar"
