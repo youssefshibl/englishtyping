@@ -15,6 +15,7 @@ app.set("views", path.join(__dirname, "view"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
 //---------------------end config ------------------
 
 //------------------- start route ----------------------------
