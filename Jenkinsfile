@@ -13,7 +13,6 @@ pipeline {
 
     stages {
 
-
         stage('Build (Master)') {
             when {
                         expression { env.BRANCH_NAME == 'master' }
